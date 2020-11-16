@@ -19,7 +19,7 @@
 
       <bng-pane-header>
         <md-icon class="material-icons">{{ ::category.icon }}</md-icon>
-          {{ ::category.title }} <span ng-if="actionQuery">({{ 'ui.controls.searchMatches' | translate: { number:controlsBindings.fActions[category.key].length} }})</span>
+          {{ ::category.title | translate}} <span ng-if="actionQuery">({{ 'ui.controls.searchMatches' | translate: { number:controlsBindings.fActions[category.key].length} }})</span>
         <md-tooltip md-direction="">{{:: 'ui.controls.expandCollapse' | translate}}</md-tooltip>
       </bng-pane-header>
       <bng-pane-body>
@@ -27,8 +27,8 @@
             style="padding:0px; min-height: 38px"
             ng-repeat="action in (controlsBindings.fActions[category.key] = (category.actions | filter: {title: actionQuery} )) | orderBy: ['order', 'title']">
           <span flex>
-            <small style="text-transform: capitalize" ng-show="::action.vehicle">[{{ ::action.vehicle }}]</small> {{ :: action.title }}
-            <md-tooltip md-direction="right">{{::action.desc}}</md-tooltip>
+            <small style="text-transform: capitalize" ng-show="::action.vehicle">[{{ ::action.vehicle }}]</small> {{ :: action.title | translate}}
+            <md-tooltip md-direction="right">{{::action.desc | translate}}</md-tooltip>
           </span>
           <div layout layout-align="start start" layout-wrap>
             <div ng-repeat="device in controls.data.bindings" layout layout-wrap>

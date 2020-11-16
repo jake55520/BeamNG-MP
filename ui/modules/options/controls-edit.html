@@ -66,8 +66,9 @@
   <div layout="row">
     <md-button flex md-no-ink style="display:block" class="md-button md-warn md-raised"
       ng-click="controlsEdit.cancel()" ui-sref="^">Cancel</md-button>
-    <md-button flex md-no-ink style="display:block" class="md-raised" ng-disabled="!controlsEdit.oldBinding.device"
-        ng-click="controlsEdit.revert()">Revert</md-button>
+    <!-- revert button not working properly, possibly remove code too(?)-->
+    <!-- <md-button flex md-no-ink style="display:block" class="md-raised" ng-disabled="!controlsEdit.oldBinding.device"
+        ng-click="controlsEdit.revert()">Revert</md-button> -->
     <md-button flex md-no-ink style="display:block" class="md-primary md-raised"
         ng-click="controlsEdit.apply()" ui-sref="^">Apply</md-button>
   </div>

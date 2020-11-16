@@ -268,7 +268,7 @@ function($scope, bngApi, SettingsAuxData, UiUnitsOptions, $state, $timeout, Rate
        vm.cameraBindings[i] = ControlsUtils.findBindingForAction("camera_"+i);
    }
 
-  vm.focusedCamId = 0;
+  vm.focusedCamName;
   vm.lastSlotId = 0;
   vm.defaultId = null;
 
@@ -276,7 +276,7 @@ function($scope, bngApi, SettingsAuxData, UiUnitsOptions, $state, $timeout, Rate
     $scope.$apply(
       function() {
         vm.cameraConfig = data.cameraConfig;
-        vm.focusedCamId = data.focusedCamId-1;
+        vm.focusedCamName = data.focusedCamName;
         vm.defaultId = null;
         for (i in vm.cameraConfig) {
             if (vm.defaultId == null && !vm.cameraConfig[i].hidden && vm.cameraConfig[i].enabled) vm.defaultId = i;
@@ -287,7 +287,7 @@ function($scope, bngApi, SettingsAuxData, UiUnitsOptions, $state, $timeout, Rate
   });
 
   vm.changeOrder     = function(camId, offset) { bngApi.engineLua(`core_camera.changeOrder      (${camId+1}, ${offset})`); }
-  vm.setCameraById           = function(camId) { bngApi.engineLua(`core_camera.setById          (${camId+1})`           ); }
+  vm.setCameraByName = function(camName) { bngApi.engineLua(`core_camera.setByName(0, '${camName}')`); }
   vm.toggleEnabledCameraById = function(camId) {console.log(camId); bngApi.engineLua(`core_camera.toggleEnabledById(${camId+1})`           ); }
   vm.resetConfiguration      = function     () { bngApi.engineLua(`core_camera.resetConfiguration()`                    ); }
 

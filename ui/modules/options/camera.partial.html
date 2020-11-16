@@ -30,8 +30,8 @@
   <div layout="row" style="margin-left:16px; margin-right:16px; line-height:24px" ng-repeat="cam in opt.cameraConfig track by $index" ng-if="!cam.hidden" layout-align="center center">
     <span flex="5">
       <md-tooltip md-direction="right">{{:: 'ui.options.camera.switchHint' | translate}}</md-tooltip>
-      <binding ng-click="opt.setCameraById($index)" ng-if="cam.slotId && opt.cameraBindings[cam.slotId]" dark="true" action="{{ opt.cameraBindings[cam.slotId].action }}" style="cursor: pointer;"></binding>
-      <span ng-click="opt.setCameraById($index)" ng-if="cam.slotId && !opt.cameraBindings[cam.slotId]" style="cursor: pointer;">{{cam.slotId}}</span>
+      <binding ng-click="opt.setCameraByName(cam.name)" ng-if="cam.slotId && opt.cameraBindings[cam.slotId]" dark="true" action="{{ opt.cameraBindings[cam.slotId].action }}" style="cursor: pointer;"></binding>
+      <span ng-click="opt.setCameraByName(cam.name)" ng-if="cam.slotId && !opt.cameraBindings[cam.slotId]" style="cursor: pointer;">{{cam.slotId}}</span>
     </span>
     <md-button ng-disabled="$index == 0"                 style="margin:0; margin-left: 12px; width:18px" class="md-icon-button md-warn" ng-click="opt.changeOrder($index, -1)">
       <md-icon class="material-icons">keyboard_arrow_up</md-icon>
@@ -45,7 +45,7 @@
     <small ng-if="$index == opt.defaultId">(default)</small>
     <md-checkbox aria-label="_" ng-model="cam.enabled" ng-change="opt.toggleEnabledCameraById($index)"></md-checkbox>
     <span flex="5">
-      <md-icon  ng-if="opt.focusedCamId == $index" class="material-icons">videocam</md-icon>
+      <md-icon  ng-if="opt.focusedCamName == cam.name" class="material-icons">videocam</md-icon>
       <md-tooltip ng-disabled="true"md-direction="right">{{:: 'ui.options.camera.current' | translate}}</md-tooltip>
     </span>
   </div>
